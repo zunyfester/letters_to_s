@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="nav">
+  <p class="logout"><a href="{% url 'logout' %}" style=color:#edede9;>Log Out</a></p>
+</div>
+<div class = "title">
+    <!--Hola, mi amor {{ user.username }}!-->
+    hola, mi amor
+</div>
+<div class="texto">
+    Has recibido la siguiente carta,
+    pasa a la siguiente página para abrirla
+</div>
+<div class = "envelope">
+    <img src="../static/images/env.png"  style="float:left;margin-top:80px;margin-left:350px;" width="700px">
+</div>
+
+<div class="to-letter">
+    <a href="{% url 'letter' %}" style=color:#432818;>Siguiente</a>
+</div>
+
+{% else %}
+<div class="title" style="font-size: 25px;">
+  <p>You are not logged in</p>
+</div>
+<div class="title" style="font-size: 25px;">
+    <a href="{% url 'login' %}">Log In</a>
+</div>
+{% endif %}
+{% endblock %}
